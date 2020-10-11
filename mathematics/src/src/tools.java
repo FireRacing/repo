@@ -433,6 +433,10 @@ class tools1{
     			boolean added = false;
     			ArrayList<Double> temp = new ArrayList<Double>();
     			if(c == '+')
+    			/*
+        		 * adds the first set with the number and then, compares
+        		 * the second set with the first set to get the subset
+        		 */
     			{
     				for(i = 0; i < set1.length;i++)
     					set1[i] += num1;
@@ -446,6 +450,10 @@ class tools1{
                 	}
     			}
     			else if(c == '-')
+    			/*
+        		 * subtracts the first set with the number and then, compares
+        		 * the second set with the first set to get the subset
+        		 */
     			{
     				for(i = 0; i < set1.length;i++)
     					set1[i] -= num1;
@@ -459,6 +467,10 @@ class tools1{
                 	}
     			}
     			else if(c == '*')
+    			/*
+        		 * multiplies the first set with the number and then, compares
+        		 * the second set with the first set to get the subset
+        		 */
     			{
     				for(i = 0; i < set1.length;i++)
     					set1[i] *= num1;
@@ -472,6 +484,10 @@ class tools1{
                 	}
     			}
     			else if(c == '/')
+    			/*
+    			 * divides the first set with the number and then, compares
+    			 * the second set with the first set to get the subset
+    			 */
     			{
     				for(i = 0; i < set1.length;i++)
     					set1[i] /= num1;
@@ -484,7 +500,7 @@ class tools1{
                 		}
                 	}
     			}
-    			else if(c == '=' && operations.charAt(1) != '<' && operations.charAt(1) != '>')
+    			else if(c == '=' && operations.charAt(1) != '<' && operations.charAt(1) != '>')//compares the set with the number
     			{
     				for(i = 0; i < set1.length;i++)
     				{
@@ -492,7 +508,7 @@ class tools1{
     						subset.add((double) set1[i]);
     				}
     			}
-    			else if(c == '=' && (operations.charAt(1) == '<' || operations.charAt(1) == '>'))
+    			else if(c == '=' && (operations.charAt(1) == '<' || operations.charAt(1) == '>'))// compares the set with the number to see if that number exists in the set
     			{
     				if(operations.charAt(1) == '>')
     				{
@@ -511,7 +527,7 @@ class tools1{
         				}
     				}
     			}
-    			else if(c == '^')
+    			else if(c == '^') // Exponates the set with the first number and then compares it with the second number
     			{
     				for(i = 0; i < set1.length;i++)
     					temp.add(Math.pow(set1[i],num1));
