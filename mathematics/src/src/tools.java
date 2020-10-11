@@ -767,6 +767,10 @@ class tools1{
     	return subset;
     }
     public double conditional_probab(int set1[], int set2[])
+    /*
+     * Computes conditional probability for
+     * a set
+     */
     {
     	double result = 0;
     	String operations;
