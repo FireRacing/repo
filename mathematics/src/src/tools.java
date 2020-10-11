@@ -500,7 +500,10 @@ class tools1{
                 		}
                 	}
     			}
-    			else if(c == '=' && operations.charAt(1) != '<' && operations.charAt(1) != '>')//compares the set with the number
+    			else if(c == '=' && operations.charAt(1) != '<' && operations.charAt(1) != '>')
+    			/*
+    			 * compares the set with the number
+    			 */
     			{
     				for(i = 0; i < set1.length;i++)
     				{
@@ -508,7 +511,10 @@ class tools1{
     						subset.add((double) set1[i]);
     				}
     			}
-    			else if(c == '=' && (operations.charAt(1) == '<' || operations.charAt(1) == '>'))// compares the set with the number to see if that number exists in the set
+    			else if(c == '=' && (operations.charAt(1) == '<' || operations.charAt(1) == '>'))
+    			/*
+    			 * compares the set with the number to see if that number exists in the set
+    			 */
     			{
     				if(operations.charAt(1) == '>')
     				{
