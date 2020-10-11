@@ -270,7 +270,6 @@ class tools1{
     		int num = Integer.parseInt(Character.toString(operations.charAt(1)));
     		int num1 = Integer.parseInt(Character.toString(operations.charAt(3)));
     		char c = operations.charAt(0);
-			boolean added = false;
 			ArrayList<Double> temp = new ArrayList<Double>();
 			if(operations.charAt(2) == '>' || operations.charAt(2) == '<')
 			{
@@ -774,6 +773,78 @@ class tools1{
     	System.out.println("What operations do you wish to perform on the string? ");
     	operations = in.nextLine();
     	ArrayList<Double> result1 = get_subset(set1, set2, operations);
+    	System.out.println("What condition do you want to check for?");
+    	/*
+    	 * Format for operations string:
+    	 * operation operation number(single digit integers only)
+    	 * Supported operations: <= >= =
+    	 */
+    	operations = in.nextLine();
+    	int count = 0;
+    	int result2 = 0;
+    	if(operations.contains(">=") == true || operations.contains("<=") == true || operations.contains("-=") == true )
+    	{
+    		if(operations.contains(">="))
+    		{
+    			int num = Integer.parseInt(Character.toString(operations.charAt(2)));
+        		for(int i = 0; i < set2.length; i++)
+        		{
+        			if(set2[i] >= num)
+        				count++;
+        		}
+        		/*
+        		 * Computes P(A) where A is the condition 
+        		 * where the element >= num
+        		 * |
+        		 * |
+        		 * v
+        		 */
+        		result2 = count/set2.length;
+    		}
+    		else if(operations.contains("<="))
+    		{
+    			int num = Integer.parseInt(Character.toString(operations.charAt(2)));
+        		for(int i = 0; i < set2.length; i++)
+        		{
+        			if(set2[i] <= num)
+        				count++;
+        		}
+        		/*
+        		 * Computes P(A) where A is the condition 
+        		 * where the element <= num
+        		 * |
+        		 * |
+        		 * v
+        		 */
+        		result2 = count/set2.length;
+    		}
+    		else if(operations.contains("-=") == true)
+    		{
+    			int num = Integer.parseInt(Character.toString(operations.charAt(2)));
+        		for(int i = 0; i < set2.length; i++)
+        		{
+        			if(set2[i] == num)
+        				count++;
+        		}
+        		/*
+        		 * Computes P(A) where A is the  
+        		 * condition where the element 
+        		 * equals num
+        		 * |
+        		 * |
+        		 * v
+        		 */
+        		result2 = count/set2.length;
+    		}
+    	}
+    	/*
+    	 * Computes P(A/B)
+    	 * |
+    	 * |
+    	 * |
+    	 * v
+    	 */
+    	result = (result1.size()/set2.length)/result2;
     	return result;
     }
 }
