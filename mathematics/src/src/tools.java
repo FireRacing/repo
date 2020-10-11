@@ -260,7 +260,7 @@ class tools1{
     public ArrayList<Double> get_subset(int[] set1, int set2[],String operations)
     /*
      * format for operations string: operation, (number or operation), operation, (number(single digit integers only)). Leave blank if you want to get a set that contains members of the second set only
-     * Supported operations: <, >, +, -, *, /. =. <=, >=, ^(exponation), %
+     * Supported operations: <, >, +, -, *, /. =. <=, >=, ^ (exponation), %
      */
     {
     	int i,j;
@@ -277,8 +277,12 @@ class tools1{
 				if(operations.charAt(2) == '>')
 				{
 					if(c == '+')
-	    			{
-	    				for(i = 0; i < set1.length;i++)
+						/*
+		        		 * adds the first set with the number and then, compares
+		        		 * it with the second number
+		        		 */
+					{
+						for(i = 0; i < set1.length;i++)
 	    					set1[i] += num;
 	    				for(i = 0; i < set1.length; i++)
 	    				{
@@ -287,6 +291,10 @@ class tools1{
 	    				}
 	    			}
 	    			else if(c == '-')
+	    				/*
+		        		 * subtracts the first set with the number and then, compares
+		        		 * it with the second number
+		        		 */
 	    			{
 	    				for(i = 0; i < set1.length;i++)
 	    					set1[i] -= num;
@@ -297,6 +305,10 @@ class tools1{
 	    				}
 	    			}
 	    			else if(c == '*')
+	    				/*
+		        		 * multiplies the first set with the number and then, compares
+		        		 * it with the second number
+		        		 */
 	    			{
 	    				for(i = 0; i < set1.length;i++)
 	    					set1[i] *= num;
@@ -307,6 +319,10 @@ class tools1{
 	    				}
 	    			}
 	    			else if(c == '/')
+	    				/*
+		        		 * divides the first set with the number and then, compares
+		        		 * it with the second number
+		        		 */
 	    			{
 	    				for(i = 0; i < set1.length;i++)
 	    					set1[i] /= num;
@@ -317,6 +333,10 @@ class tools1{
 	    				}
 	    			}
 	    			else if(c == '=' && operations.charAt(1) != '<' && operations.charAt(1) != '>')
+	    				/*
+		        		 * compares the first set with the number and then, compares
+		        		 * it with the second number
+		        		 */
 	    			{
 	    				for(i = 0; i < set1.length;i++)
 	    				{
@@ -331,6 +351,10 @@ class tools1{
 	    				temp.clear();
 	    			}
 	    			else if(c == '^')
+	    				/*
+		        		 * exponates the first set with the number and then, compares
+		        		 * it with the second number
+		        		 */
 	    			{
 	    				double d = 0;
 	    				for(i = 0; i < set1.length;i++)
@@ -341,6 +365,10 @@ class tools1{
 	    				}
 	    			}
 	    			else if(c == '%')
+	    				/*
+		        		 * mods the first set with the number and then, compares
+		        		 * it with the second number
+		        		 */
 	    			{
 	    				for(i = 0; i < set1.length;i++)
 	    				{
@@ -353,7 +381,11 @@ class tools1{
 				if(operations.charAt(2) == '<')
 				{
 					if(c == '+')
-	    			{
+						/*
+		        		 * adds the first set with the number and then, compares
+		        		 * it with the second number
+		        		 */
+					{
 	    				for(i = 0; i < set1.length;i++)
 	    				{
 	    					set1[i] += num;
@@ -362,6 +394,10 @@ class tools1{
 	    				}
 	    			}
 	    			else if(c == '-')
+	    				/*
+		        		 * subtracts the first set with the number and then, compares
+		        		 * it with the second number
+		        		 */
 	    			{
 	    				for(i = 0; i < set1.length;i++)
 	    				{
@@ -371,6 +407,10 @@ class tools1{
 	    				}
 	    			}
 	    			else if(c == '*')
+	    				/*
+		        		 * multipliess the first set with the number and then, compares
+		        		 * it with the second number
+		        		 */
 	    			{
 	    				for(i = 0; i < set1.length;i++)
 	    				{
@@ -380,6 +420,10 @@ class tools1{
 	    				}
 	    			}
 	    			else if(c == '/')
+	    				/*
+		        		 * divides the first set with the number and then, compares
+		        		 * it with the second number
+		        		 */
 	    			{
 	    				for(i = 0; i < set1.length;i++)
 	    				{
@@ -389,6 +433,10 @@ class tools1{
 	    				}
 	    			}
 	    			else if(c == '=' && operations.charAt(1) != '<' && operations.charAt(1) != '>')
+	    				/*
+		        		 * compares the first set with the number and then, compares
+		        		 * it with the second number
+		        		 */
 	    			{
 	    				for(i = 0; i < set1.length;i++)
 	    				{
@@ -403,6 +451,10 @@ class tools1{
 	    				temp.clear();
 	    			}
 	    			else if(c == '^')
+	    				/*
+		        		 * exponates the first set with the number and then, compares
+		        		 * it with the second number
+		        		 */
 	    			{
 	    				double d = 0;
 	    				for(i = 0; i < set1.length;i++)
@@ -413,7 +465,11 @@ class tools1{
 	    				}
 	    			}
 	    			else if(c == '%')
-	    			{
+	    				/*
+		        		 * mods the first set with the number and then, compares
+		        		 * it with the second number
+		        		 */
+	    			{	
 	    				for(i = 0; i < set1.length;i++)
 	    				{
 	    					set1[i] %=num;
