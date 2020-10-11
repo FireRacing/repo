@@ -851,6 +851,45 @@ class tools1{
     	result = (result1.size()/set2.length)/result2;
     	return result;
     }
+    double return_result(char c,double point)
+    {
+    	double res = 0;
+    	switch(c)
+    	{
+    	case 'a':
+    	case 'b':
+    	case 'c':
+    	case 'd':
+    	case 'f':
+    	case 'g':
+    	case 'h':
+    	case 'j':
+    	case 'k':
+    	case 'l':
+    	case 'm':
+    	case 'n':
+    	case 'o':
+    	case 'p':
+    	case 'q':
+    	case 'r':
+    	case 's':
+    	case 't':
+    	case 'u':
+    	case 'v':
+    	case 'w':
+    	case 'x':
+    	case 'y':
+    	case 'z': res = point;
+    	break;
+    	}
+    	return res;
+    }
+    double get_x0(String x,double point)//for a one variable equation
+    {
+    	double res = 0;
+    	ArrayList<Double> conatiner = new ArrayList<Double>();
+    	return res;
+    }
 }
 public class tools{
 	public static void main (String args[])
