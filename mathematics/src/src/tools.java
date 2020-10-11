@@ -771,7 +771,9 @@ class tools1{
     {
     	double result = 0;
     	String operations;
-    	
+    	System.out.println("What operations do you wish to perform on the string? ");
+    	operations = in.nextLine();
+    	ArrayList<Double> result1 = get_subset(set1, set2, operations);
     	return result;
     }
 }
