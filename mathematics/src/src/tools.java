@@ -260,15 +260,169 @@ class tools1{
     public ArrayList<Double> get_subset(int[] set1, int set2[],String operations)
     /*
      * format for operations string: operation, (number or operation), operation, (number(single digit integers only)). Leave blank if you want to get a set that contains members of the second set only
-     * Allowed operations: < > + - * / = <= >= ^ %
+     * Supported operations: <, >, +, -, *, /. =. <=, >=, ^(exponation), %
      */
     {
     	int i,j;
     	ArrayList<Double> subset = new ArrayList<Double>();
-    	if(Character.isDigit(operations.charAt(3)) == true && Character.isDigit(operations.charAt(1)) == true)
+    	if(Character.isDigit(operations.charAt(3)) == true && Character.isDigit(operations.charAt(1)) == false)
     	{
     		int num = Integer.parseInt(Character.toString(operations.charAt(1)));
     		int num1 = Integer.parseInt(Character.toString(operations.charAt(3)));
+    		char c = operations.charAt(0);
+			boolean added = false;
+			ArrayList<Double> temp = new ArrayList<Double>();
+			if(operations.charAt(2) == '>' || operations.charAt(2) == '<')
+			{
+				if(operations.charAt(2) == '>')
+				{
+					if(c == '+')
+	    			{
+	    				for(i = 0; i < set1.length;i++)
+	    					set1[i] += num;
+	    				for(i = 0; i < set1.length; i++)
+	    				{
+	    					if(set1[i] > num1)
+	    						subset.add((double) set1[i]);
+	    				}
+	    			}
+	    			else if(c == '-')
+	    			{
+	    				for(i = 0; i < set1.length;i++)
+	    					set1[i] -= num;
+	    				for(i = 0; i < set1.length; i++)
+	    				{
+	    					if(set1[i] > num1)
+	    						subset.add((double) set1[i]);
+	    				}
+	    			}
+	    			else if(c == '*')
+	    			{
+	    				for(i = 0; i < set1.length;i++)
+	    					set1[i] *= num;
+	    				for(i = 0; i < set1.length; i++)
+	    				{
+	    					if(set1[i] > num1)
+	    						subset.add((double) set1[i]);
+	    				}
+	    			}
+	    			else if(c == '/')
+	    			{
+	    				for(i = 0; i < set1.length;i++)
+	    					set1[i] /= num;
+	    				for(i = 0; i < set1.length; i++)
+	    				{
+	    					if(set1[i] > num1)
+	    						subset.add((double) set1[i]);
+	    				}
+	    			}
+	    			else if(c == '=' && operations.charAt(1) != '<' && operations.charAt(1) != '>')
+	    			{
+	    				for(i = 0; i < set1.length;i++)
+	    				{
+	    					if(set1[i] == num)
+	    						temp.add((double) set1[i]);
+	    				}
+	    				for(i = 0; i < temp.size(); i++)
+	    				{
+	    					if(temp.get(i) > num1)
+	    						subset.add(temp.get(i));
+	    				}
+	    				temp.clear();
+	    			}
+	    			else if(c == '^')
+	    			{
+	    				double d = 0;
+	    				for(i = 0; i < set1.length;i++)
+	    				{
+	    					d = Math.pow(set1[i], num);
+	    					if(d > num1)
+	    						subset.add(d);
+	    				}
+	    			}
+	    			else if(c == '%')
+	    			{
+	    				for(i = 0; i < set1.length;i++)
+	    				{
+	    					set1[i] %=num;
+	    					if(set1[i] > num1)
+	    						subset.add((double) set1[i]);
+	    				}
+	    			}
+				}
+				if(operations.charAt(2) == '<')
+				{
+					if(c == '+')
+	    			{
+	    				for(i = 0; i < set1.length;i++)
+	    				{
+	    					set1[i] += num;
+	    					if(set1[i] < num1)
+	    						subset.add((double)set1[i]);
+	    				}
+	    			}
+	    			else if(c == '-')
+	    			{
+	    				for(i = 0; i < set1.length;i++)
+	    				{
+	    					set1[i] -= num;
+	    					if(set1[i] < num1)
+	    						subset.add((double) set1[i]);
+	    				}
+	    			}
+	    			else if(c == '*')
+	    			{
+	    				for(i = 0; i < set1.length;i++)
+	    				{
+	    					set1[i] *= num;
+	    					if(set1[i] < num1)
+	    						subset.add((double) set1[i]);
+	    				}
+	    			}
+	    			else if(c == '/')
+	    			{
+	    				for(i = 0; i < set1.length;i++)
+	    				{
+	    					set1[i] /= num;
+	    					if(set1[i] < num1)
+	    						subset.add((double) set1[i]);
+	    				}
+	    			}
+	    			else if(c == '=' && operations.charAt(1) != '<' && operations.charAt(1) != '>')
+	    			{
+	    				for(i = 0; i < set1.length;i++)
+	    				{
+	    					if(set1[i] == num)
+	    						temp.add((double) set1[i]);
+	    				}
+	    				for(i = 0; i < temp.size(); i++)
+	    				{
+	    					if(temp.get(i) < num1)
+	    						subset.add(temp.get(i));
+	    				}
+	    				temp.clear();
+	    			}
+	    			else if(c == '^')
+	    			{
+	    				double d = 0;
+	    				for(i = 0; i < set1.length;i++)
+	    				{
+	    					d = Math.pow(set1[i], num);
+	    					if(d < num1)
+	    						subset.add(d);
+	    				}
+	    			}
+	    			else if(c == '%')
+	    			{
+	    				for(i = 0; i < set1.length;i++)
+	    				{
+	    					set1[i] %=num;
+	    					if(set1[i] < num1)
+	    						subset.add((double) set1[i]);
+	    				}
+	    			}
+				}
+			}
     	}
     	else if(Character.isDigit(operations.charAt(3)) == true && Character.isDigit(operations.charAt(1)) == false)
     	{
@@ -282,21 +436,53 @@ class tools1{
     			{
     				for(i = 0; i < set1.length;i++)
     					set1[i] += num1;
+    				for(i = 0; i < set1.length; i++)
+                	{
+                		for(j = 0; j < set2.length; j++)
+                		{
+                			if(set1[i] == set2[j])
+                				subset.add((double)set2[j]);
+                		}
+                	}
     			}
     			else if(c == '-')
     			{
     				for(i = 0; i < set1.length;i++)
     					set1[i] -= num1;
+    				for(i = 0; i < set1.length; i++)
+                	{
+                		for(j = 0; j < set2.length; j++)
+                		{
+                			if(set1[i] == set2[j])
+                				subset.add((double)set2[j]);
+                		}
+                	}
     			}
     			else if(c == '*')
     			{
     				for(i = 0; i < set1.length;i++)
     					set1[i] *= num1;
+    				for(i = 0; i < set1.length; i++)
+                	{
+                		for(j = 0; j < set2.length; j++)
+                		{
+                			if(set1[i] == set2[j])
+                				subset.add((double)set2[j]);
+                		}
+                	}
     			}
     			else if(c == '/')
     			{
     				for(i = 0; i < set1.length;i++)
     					set1[i] /= num1;
+    				for(i = 0; i < set1.length; i++)
+                	{
+                		for(j = 0; j < set2.length; j++)
+                		{
+                			if(set1[i] == set2[j])
+                				subset.add((double)set2[j]);
+                		}
+                	}
     			}
     			else if(c == '=' && operations.charAt(1) != '<' && operations.charAt(1) != '>')
     			{
@@ -338,12 +524,19 @@ class tools1{
                 		}
                 	}
     				temp.clear();
-    				added = true;
     			}
     			else if(c == '%')
     			{
     				for(i = 0; i < set1.length;i++)
     					set1[i] %= num1;
+    				for(i = 0; i < set1.length; i++)
+                	{
+                		for(j = 0; j < set2.length; j++)
+                		{
+                			if(set1[i] == set2[j])
+                				subset.add((double)set2[j]);
+                		}
+                	}
     			}
     			if(added == false)
     			{
