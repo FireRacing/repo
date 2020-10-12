@@ -1,3 +1,4 @@
+//Untested
 package src;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -107,5 +108,4 @@ public class probability{
     	}
     	return result;
 	}
-	
 }

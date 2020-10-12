@@ -5,7 +5,7 @@ import java.util.Scanner;
 import java.util.UUID;
 import java.util.Stack;
 /*
- * Note:- Have not tested the transpose functions have not been tested
+ * Note:- Have not tested the transpose functions
  */
 
 public class matrix_manipulation {

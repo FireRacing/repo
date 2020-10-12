@@ -799,7 +799,7 @@ class tools1{
     	}
     	return res;
     }
-    double get_x0(String x,double point)//for a one variable equation
+    double get_x0(String x,double point)//for a one variable equation (Incomplete)
     {
     	double res = 0;
     	ArrayList<Double> conatiner = new ArrayList<Double>();
