@@ -74,6 +74,333 @@ public class probability{
     	}
 		return result;
 	}
+	public double vanilla_probab(double set1[]) //Computes P(A)
+	{
+		System.out.println("What condition do you want to check for?");
+    	/*
+    	 * Format for operations string:
+    	 * operation operation number(single digit integers only)
+    	 * Supported operations: <= >= =
+    	 */
+    	String operations = in.nextLine();
+		double result = 0;
+		double num = 0;
+		int count =0;
+		String s = new String();
+		if(operations.contains(">=") == true || operations.contains("<=") == true || operations.contains("-=") == true )
+    	{
+    		if(operations.contains(">="))
+    		{
+    			if(Character.isDigit(operations.charAt(3)) == true)
+    			{
+    				int i = 4;
+    				s = s+operations.charAt(3);
+    				if(i < operations.length() && i+1 < operations.length())
+    				{
+    					while(i < operations.length() && (Character.isDigit(operations.charAt(i))|| Character.compare(operations.charAt(i), '.') == 0))
+        				{
+        					s = s.concat(Character.toString(operations.charAt(i)));
+        					i = i+1;
+        				}
+    				}
+    				num = Double.parseDouble(s);
+    			}
+        		for(int i = 0; i < set1.length; i++)
+        		{
+        			if(set1[i] >= num)
+        				count++;
+        		}
+        		/*
+        		 * Computes P(A) where A is the condition 
+        		 * where the element >= num
+        		 * |
+        		 * |
+        		 * v
+        		 */
+        		result = count/set1.length;
+    		}
+    		else if(operations.contains("<="))
+    		{
+    			if(Character.isDigit(operations.charAt(3)) == true)
+    			{
+    				int i = 4;
+    			    s = s+operations.charAt(3);
+    				if(i < operations.length() && i+1 < operations.length())
+    				{
+    					while(i < operations.length() && (Character.isDigit(operations.charAt(i))|| Character.compare(operations.charAt(i), '.') == 0))
+        				{
+        					s = s.concat(Character.toString(operations.charAt(i)));
+        					i = i+1;
+        				}
+    				}
+    				num = Double.parseDouble(s);
+    			}
+        		for(int i = 0; i < set1.length; i++)
+        		{
+        			if(set1[i] <= num)
+        				count++;
+        		}
+        		/*
+        		 * Computes P(A) where A is the condition 
+        		 * where the element <= num
+        		 * |
+        		 * |
+        		 * v
+        		 */
+        		result = count/set1.length;
+    		}
+    		else if(operations.contains("-=") == true)
+    		{
+    			if(Character.isDigit(operations.charAt(3)) == true)
+    			{
+    				int i = 4;
+    				s = s+operations.charAt(3);
+    				if(i < operations.length() && i+1 < operations.length())
+    				{
+    					while(i < operations.length() && (Character.isDigit(operations.charAt(i))|| Character.compare(operations.charAt(i), '.') == 0))
+        				{
+        					s = s.concat(Character.toString(operations.charAt(i)));
+        					i = i+1;
+        				}
+    				}
+    				num = Double.parseDouble(s);
+    			}
+        		for(int i = 0; i < set1.length; i++)
+        		{
+        			if(set1[i] == num)
+        				count++;
+        		}
+        		/*
+        		 * Computes P(A) where A is the  
+        		 * condition where the element 
+        		 * equals num
+        		 * |
+        		 * |
+        		 * v
+        		 */
+        		result = count/set1.length;
+    		}
+    	}
+		return result;
+	}
+	public double vanilla_probab(float set1[]) //Computes P(A)
+	{
+		System.out.println("What condition do you want to check for?");
+    	/*
+    	 * Format for operations string:
+    	 * operation operation number(single digit integers only)
+    	 * Supported operations: <= >= =
+    	 */
+    	String operations = in.nextLine();
+		double result = 0;
+		float num = 0;
+		int count =0;
+		String s = new String();
+		if(operations.contains(">=") == true || operations.contains("<=") == true || operations.contains("-=") == true )
+    	{
+    		if(operations.contains(">="))
+    		{
+    			if(Character.isDigit(operations.charAt(3)) == true)
+    			{
+    				int i = 4;
+    				s = s+operations.charAt(3);
+    				if(i < operations.length() && i+1 < operations.length())
+    				{
+    					while(i < operations.length() && (Character.isDigit(operations.charAt(i))|| Character.compare(operations.charAt(i), '.') == 0))
+        				{
+        					s = s.concat(Character.toString(operations.charAt(i)));
+        					i = i+1;
+        				}
+    				}
+    				num = Float.parseFloat(s);
+    			}
+        		for(int i = 0; i < set1.length; i++)
+        		{
+        			if(set1[i] >= num)
+        				count++;
+        		}
+        		/*
+        		 * Computes P(A) where A is the condition 
+        		 * where the element >= num
+        		 * |
+        		 * |
+        		 * v
+        		 */
+        		result = count/set1.length;
+    		}
+    		else if(operations.contains("<="))
+    		{
+    			if(Character.isDigit(operations.charAt(3)) == true)
+    			{
+    				int i = 4;
+    			    s = s+operations.charAt(3);
+    				if(i < operations.length() && i+1 < operations.length())
+    				{
+    					while(i < operations.length() && (Character.isDigit(operations.charAt(i))|| Character.compare(operations.charAt(i), '.') == 0))
+        				{
+        					s = s.concat(Character.toString(operations.charAt(i)));
+        					i = i+1;
+        				}
+    				}
+    				num = Float.parseFloat(s);
+    			}
+        		for(int i = 0; i < set1.length; i++)
+        		{
+        			if(set1[i] <= num)
+        				count++;
+        		}
+        		/*
+        		 * Computes P(A) where A is the condition 
+        		 * where the element <= num
+        		 * |
+        		 * |
+        		 * v
+        		 */
+        		result = count/set1.length;
+    		}
+    		else if(operations.contains("-=") == true)
+    		{
+    			if(Character.isDigit(operations.charAt(3)) == true)
+    			{
+    				int i = 4;
+    				s = s+operations.charAt(3);
+    				if(i < operations.length() && i+1 < operations.length())
+    				{
+    					while(i < operations.length() && (Character.isDigit(operations.charAt(i))|| Character.compare(operations.charAt(i), '.') == 0))
+        				{
+        					s = s.concat(Character.toString(operations.charAt(i)));
+        					i = i+1;
+        				}
+    				}
+    				num = Float.parseFloat(s);
+    			}
+        		for(int i = 0; i < set1.length; i++)
+        		{
+        			if(set1[i] == num)
+        				count++;
+        		}
+        		/*
+        		 * Computes P(A) where A is the  
+        		 * condition where the element 
+        		 * equals num
+        		 * |
+        		 * |
+        		 * v
+        		 */
+        		result = count/set1.length;
+    		}
+    	}
+		return result;
+	}
+	public double vanilla_probab(long set1[]) //Computes P(A)
+	{
+		System.out.println("What condition do you want to check for?");
+    	/*
+    	 * Format for operations string:
+    	 * operation operation number(single digit integers only)
+    	 * Supported operations: <= >= =
+    	 */
+    	String operations = in.nextLine();
+		double result = 0;
+		long num = 0;
+		int count =0;
+		String s = new String();
+		if(operations.contains(">=") == true || operations.contains("<=") == true || operations.contains("-=") == true )
+    	{
+    		if(operations.contains(">="))
+    		{
+    			if(Character.isDigit(operations.charAt(3)) == true)
+    			{
+    				int i = 4;
+    				s = s+operations.charAt(3);
+    				if(i < operations.length() && i+1 < operations.length())
+    				{
+    					while(i < operations.length() && Character.isDigit(operations.charAt(i)))
+        				{
+        					s = s.concat(Character.toString(operations.charAt(i)));
+        					i = i+1;
+        				}
+    				}
+    				num = Long.parseLong(s);
+    			}
+        		for(int i = 0; i < set1.length; i++)
+        		{
+        			if(set1[i] >= num)
+        				count++;
+        		}
+        		/*
+        		 * Computes P(A) where A is the condition 
+        		 * where the element >= num
+        		 * |
+        		 * |
+        		 * v
+        		 */
+        		result = count/set1.length;
+    		}
+    		else if(operations.contains("<="))
+    		{
+    			if(Character.isDigit(operations.charAt(3)) == true)
+    			{
+    				int i = 4;
+    			    s = s+operations.charAt(3);
+    				if(i < operations.length() && i+1 < operations.length())
+    				{
+    					while(i < operations.length() && Character.isDigit(operations.charAt(i)))
+        				{
+        					s = s.concat(Character.toString(operations.charAt(i)));
+        					i = i+1;
+        				}
+    				}
+    				num = Long.parseLong(s);
+    			}
+        		for(int i = 0; i < set1.length; i++)
+        		{
+        			if(set1[i] <= num)
+        				count++;
+        		}
+        		/*
+        		 * Computes P(A) where A is the condition 
+        		 * where the element <= num
+        		 * |
+        		 * |
+        		 * v
+        		 */
+        		result = count/set1.length;
+    		}
+    		else if(operations.contains("-=") == true)
+    		{
+    			if(Character.isDigit(operations.charAt(3)) == true)
+    			{
+    				int i = 4;
+    				s = s+operations.charAt(3);
+    				if(i < operations.length() && i+1 < operations.length())
+    				{
+    					while(i < operations.length() && Character.isDigit(operations.charAt(i)))
+        				{
+        					s = s.concat(Character.toString(operations.charAt(i)));
+        					i = i+1;
+        				}
+    				}
+    				num = Long.parseLong(s);
+    			}
+        		for(int i = 0; i < set1.length; i++)
+        		{
+        			if(set1[i] == num)
+        				count++;
+        		}
+        		/*
+        		 * Computes P(A) where A is the  
+        		 * condition where the element 
+        		 * equals num
+        		 * |
+        		 * |
+        		 * v
+        		 */
+        		result = count/set1.length;
+    		}
+    	}
+		return result;
+	}
 	public double conditional_probab(int set1[], int set2[])
     /*
      * Computes conditional probability for
