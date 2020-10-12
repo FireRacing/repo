@@ -85,14 +85,7 @@ public class probability{
     	operations = in.nextLine();
     	ArrayList<Double> result1 = t.get_subset(set1, set2, operations);
     	double result2 = vanilla_probab(set2);
-    	/*
-    	 * Computes P(A/B)
-    	 * |
-    	 * |
-    	 * |
-    	 * v
-    	 */
-    	result = (result1.size()/set2.length)/result2;
+    	result = (result1.size()/set2.length)/result2;//Computes P(A/B)
     	return result;
     }
 	public double bayes_theorem(int[] set1, int[] set2)
