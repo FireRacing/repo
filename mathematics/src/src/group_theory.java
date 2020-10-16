@@ -251,13 +251,23 @@ class group{
 				double d2[][] = new double[d.size()][d.size()]; //Needs optimizing
 				for(i = 0; i < d.size(); i++)
 				{
-					if(d.get(i)%d1 == 0)
-						System.out.println("Identity element exists");
+					for(int j = 0; j < d.size(); j++)
+					{
+						d2[i][j] = (d.get(i)+d.get(j))%d1;
+					}
 				}
 				for(i = 0; i < d.size(); i++)
 				{
-					
+					for(int j = 0; j < d.size(); j++)
+					{
+						if(d2[i][j] == 0)
+							System.out.println("Identity element exists");
+					}
 				}
+			}
+			else if(s.charAt(0) == '-')
+			{
+				
 			}
 		}
 		return false;
