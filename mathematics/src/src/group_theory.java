@@ -244,15 +244,15 @@ class group{
 		{
 			if(s.charAt(0) == '+')
 			{
-				int i = 0;
+				int i = 0, count = 0;
 				while(i+1 < operations.length() && Character.isDigit(operations.charAt(i+1)) == true)
 					s.concat(Character.toString(operations.charAt(i)));
 				double d1 = Double.parseDouble(s);
-				double d2[][] = new double[d.size()][d.size()]; //Needs optimizing
+				int d2[][] = new int[d.size()][d.size()]; //Needs optimizing
 				for(i = 0; i < d.size(); i++)
 				{
 					for(int j = 0; j < d.size(); j++)
-						d2[i][j] = (d.get(i)+d.get(j))%d1;
+						d2[i][j] = (int)((d.get(i)+d.get(j))%d1);
 				}
 				for(i = 0; i < d.size(); i++)
 				{
@@ -261,11 +261,98 @@ class group{
 						if(d2[i][j] == 0)
 							System.out.println("Identity element exists");
 					}
+					
 				}
+				for(i = 0; i < d.size() ; i++)
+				{
+					for(int j = 0 ; j < d.size(); j++)
+						d2[i][j] = 0;
+				}
+				d2 = null;
 			}
 			else if(s.charAt(0) == '-')
 			{
-				
+				int i = 0, count = 0;
+				while(i+1 < operations.length() && Character.isDigit(operations.charAt(i+1)) == true)
+					s.concat(Character.toString(operations.charAt(i)));
+				double d1 = Double.parseDouble(s);
+				int d2[][] = new int[d.size()][d.size()]; //Needs optimizing
+				for(i = 0; i < d.size(); i++)
+				{
+					for(int j = 0; j < d.size(); j++)
+						d2[i][j] = (int)((d.get(i)+d.get(j))%d1);
+				}
+				for(i = 0; i < d.size(); i++)
+				{
+					for(int j = 0; j < d.size(); j++)
+					{
+						if(d2[i][j] == 0)
+							System.out.println("Identity element exists");
+					}
+					
+				}
+				for(i = 0; i < d.size() ; i++)
+				{
+					for(int j = 0 ; j < d.size(); j++)
+						d2[i][j] = 0;
+				}
+				d2 = null;
+			}
+			else if(s.charAt(0) == '*')
+			{
+				int i = 0, count = 0;
+				while(i+1 < operations.length() && Character.isDigit(operations.charAt(i+1)) == true)
+					s.concat(Character.toString(operations.charAt(i)));
+				double d1 = Double.parseDouble(s);
+				int d2[][] = new int[d.size()][d.size()]; //Needs optimizing
+				for(i = 0; i < d.size(); i++)
+				{
+					for(int j = 0; j < d.size(); j++)
+						d2[i][j] = (int)((d.get(i)+d.get(j))%d1);
+				}
+				for(i = 0; i < d.size(); i++)
+				{
+					for(int j = 0; j < d.size(); j++)
+					{
+						if(d2[i][j] == 1)
+							System.out.println("Identity element exists");
+					}
+					
+				}
+				for(i = 0; i < d.size() ; i++)
+				{
+					for(int j = 0 ; j < d.size(); j++)
+						d2[i][j] = 0;
+				}
+				d2 = null;
+			}
+			else if(s.charAt(0) == '/')
+			{
+				int i = 0, count = 0;
+				while(i+1 < operations.length() && Character.isDigit(operations.charAt(i+1)) == true)
+					s.concat(Character.toString(operations.charAt(i)));
+				double d1 = Double.parseDouble(s);
+				int d2[][] = new int[d.size()][d.size()]; //Needs optimizing
+				for(i = 0; i < d.size(); i++)
+				{
+					for(int j = 0; j < d.size(); j++)
+						d2[i][j] = (int)((d.get(i)+d.get(j))%d1);
+				}
+				for(i = 0; i < d.size(); i++)
+				{
+					for(int j = 0; j < d.size(); j++)
+					{
+						if(d2[i][j] == 1)
+							System.out.println("Identity element exists");
+					}
+					
+				}
+				for(i = 0; i < d.size() ; i++)
+				{
+					for(int j = 0 ; j < d.size(); j++)
+						d2[i][j] = 0;
+				}
+				d2 = null;
 			}
 		}
 		return false;
