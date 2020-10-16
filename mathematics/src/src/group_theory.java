@@ -252,9 +252,7 @@ class group{
 				for(i = 0; i < d.size(); i++)
 				{
 					for(int j = 0; j < d.size(); j++)
-					{
 						d2[i][j] = (d.get(i)+d.get(j))%d1;
-					}
 				}
 				for(i = 0; i < d.size(); i++)
 				{
