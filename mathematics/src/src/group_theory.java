@@ -103,11 +103,20 @@ class group{
 		}
 		return false;
 	}
-	boolean verify_whether_subgroup(ArrayList<Double> d, int start_point, int end_point,char group_name,String operation)
+	boolean verify_whether_subgroup(ArrayList<Double> d,char group_name,String operations)
+	/*
+	 * % followed by a number will be considered as a single
+	 * operation. A modulus table will be constructed to see whether
+	 * there exists an identity element
+	 * @param 
+	 * d - the group to be verified
+	 * group_name - for labeling purposes
+	 * operations - operations to be performed
+	 */
 	{
-		if(operation.equals("--+") || operation.equals("---"))
+		if(operations.equals("--+") || operations.equals("---"))
 		{
-			for(int i = start_point;i < end_point;i++)
+			for(int i = 0;i < d.size();i++)
 			{
 				if(d.get(i)==0)
 					System.out.println("Identity element exists");
@@ -118,21 +127,21 @@ class group{
 				}
 			}
 			int count =0,count1 = 0;
-			if(operation.equals("--+"))
+			if(operations.equals("--+"))
 			{
 				System.out.println("Inverse exists");
-				for(int i = start_point;i < end_point; i++)
+				for(int i = 0; i < d.size(); i++)
 				{
-					if(i+1<end_point&&((d.get(i)+d.get(i+1))==(d.get(i+1)+d.get(i))))
+					if(i+1<d.size()&&((d.get(i)+d.get(i+1))==(d.get(i+1)+d.get(i))))
 						count++;
 				}
-				if(count == end_point-2)
+				if(count == d.size()-2)
 				{
 					System.out.println(group_name+" is a group under addition");
 					return true;
 				}
 			}
-			else if(operation.equals("---"))
+			else if(operations.equals("---"))
 			{
 				for(int i=0;i<d.size();i++)
 				{
@@ -150,9 +159,9 @@ class group{
 					System.out.println(group_name+" is not a group under subtraction");
 			}
 		}
-		if(operation.equals("--*") || operation.equals("--/"))
+		if(operations.equals("--*") || operations.equals("--/"))
 		{
-			for(int i = start_point; i < end_point; i++)
+			for(int i = 0; i < d.size(); i++)
 			{
 				if(d.get(0) == 1)
 					System.out.println("Identity element exists");
@@ -163,36 +172,93 @@ class group{
 				}
 			}
 			int count =0,count1 = 0;
-			if(operation.equals("--*"))
+			if(operations.equals("--*"))
 			{
 				System.out.println("Inverse exists");
-				for(int i = start_point;i < end_point; i++)
+				for(int i = 0; i < d.size(); i++)
 				{
-					if(i+1<end_point&&((d.get(i)*d.get(i+1))==(d.get(i+1)*d.get(i))))
+					if(i+1<d.size()&&((d.get(i)*d.get(i+1))==(d.get(i+1)*d.get(i))))
 						count++;
 				}
-				if(count == end_point-2)
+				if(count == d.size()-2)
 				{
 					System.out.println(group_name+" is a group under multiplication");
 					return true;
 				}
 			}
-			else if(operation.equals("--/"))
+			else if(operations.equals("--/"))
 			{
-				for(int i = start_point; i < end_point; i++)
+				for(int i = 0; i < d.size(); i++)
 				{
-					if(i+1 < end_point&&((d.get(i)/d.get(i+1))==(d.get(i+1)/d.get(i))))
+					if(i+1 < d.size()&&((d.get(i)/d.get(i+1))==(d.get(i+1)/d.get(i))))
 						count++;
 					if(d.get(i)/d.get(i) == 1)
 						count++;
 				}
-				if(count == end_point-2 && count1 == end_point-1)
+				if(count == d.size()-2 && count1 == d.size()-1)
 				{
 					System.out.println(group_name+" is a group under division");
 					return true;
 				}
 				else
 					System.out.println(group_name+" is not a group under division");
+			}
+		}
+		String s = new String();
+		for(int i = 0; i < 2 ; i++)
+		{
+			s.concat(Character.toString(operations.charAt(i)));
+		}
+		if(s.equals("<="))
+		{
+			if(Character.isDigit(operations.charAt(3)) == true)
+			{
+				int i = 3;
+				s = "";
+				while(i+1 < operations.length() && Character.isDigit(operations.charAt(i+1)) == true)
+					s.concat(Character.toString(operations.charAt(i)));
+				double d1 = Double.parseDouble(s);
+				boolean identity_exists = false;
+				for(i = 0; i < d.size();i++)
+				{
+					if(d.get(i) == d1)
+						identity_exists = true;
+				}
+				if(identity_exists == true)
+				{
+					System.out.println("Identity element exists");
+					for(i = 0; i < d.size(); i++)
+					{
+						
+					}
+				}
+				else
+					return false;
+				i = 0;
+			}
+		}
+		else if(s.equals(">="))
+		{
+			
+		}
+		else if(s.charAt(1) == '%')
+		{
+			if(s.charAt(0) == '+')
+			{
+				int i = 0;
+				while(i+1 < operations.length() && Character.isDigit(operations.charAt(i+1)) == true)
+					s.concat(Character.toString(operations.charAt(i)));
+				double d1 = Double.parseDouble(s);
+				double d2[][] = new double[d.size()][d.size()]; //Needs optimizing
+				for(i = 0; i < d.size(); i++)
+				{
+					if(d.get(i)%d1 == 0)
+						System.out.println("Identity element exists");
+				}
+				for(i = 0; i < d.size(); i++)
+				{
+					
+				}
 			}
 		}
 		return false;
