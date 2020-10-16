@@ -108,10 +108,9 @@ class group{
 	 * % followed by a number will be considered as a single
 	 * operation. A modulus table will be constructed to see whether
 	 * there exists an identity element
-	 * @param 
-	 * d - the group to be verified
-	 * group_name - for labeling purposes
-	 * operations - operations to be performed
+	 * @param d - the group to be verified
+	 * @param group_name - for labeling purposes
+	 * @param operations - operations to be performed
 	 */
 	{
 		if(operations.equals("--+") || operations.equals("---"))
