@@ -2,6 +2,10 @@ package src;
 import java.util.Scanner;
 import java.util.ArrayList;
 
+/*
+ * TO DO:- Add support for multi-digit integers in verify_whether_group
+ *         Add support for <> and = operators in verify_whether_subgroup
+ */
 class group{
 	boolean verify_whether_group(ArrayList<Integer> d,char group_name,String operation)
 	/*
@@ -108,6 +112,7 @@ class group{
 	 * % followed by a number will be considered as a single
 	 * operation. A modulus table will be constructed to see whether
 	 * there exists an identity element
+	 * Supported operations: - + - * / ^(modulo only) <= (less than or equal to) >= (greater than or equal to) <>(not) =
 	 * @param d - the group to be verified
 	 * @param group_name - for labeling purposes
 	 * @param operations - operations to be performed
@@ -191,16 +196,17 @@ class group{
 				{
 					if(i+1 < d.size()&&((d.get(i)/d.get(i+1))==(d.get(i+1)/d.get(i))))
 						count++;
-					if(d.get(i)/d.get(i) == 1)
-						count++;
 				}
-				if(count == d.size()-2 && count1 == d.size()-1)
+				if(count == d.size()-2)
 				{
 					System.out.println(group_name+" is a group under division");
 					return true;
 				}
 				else
+				{
 					System.out.println(group_name+" is not a group under division");
+					return false;
+				}
 			}
 		}
 		String s = new String();
@@ -275,6 +281,7 @@ class group{
 		}
 		else if(s.charAt(1) == '%')
 		{
+			boolean identity_exists;
 			if(s.charAt(0) == '+')
 			{
 				int i = 0;
@@ -292,14 +299,16 @@ class group{
 					for(int j = 0; j < d.size(); j++)
 					{
 						if(d2[i][j] == 0)
+						{
 							System.out.println("Identity element exists");
+							identity_exists = true;
+						}
 					}
-					
 				}
 				for(i = 0; i < d.size() ; i++)
 				{
 					for(int j = 0 ; j < d.size(); j++)
-						d2[i][j] = 0;
+						d2[i][j] = 0; //To free up memory
 				}
 				d2 = null;
 			}
@@ -313,21 +322,24 @@ class group{
 				for(i = 0; i < d.size(); i++)
 				{
 					for(int j = 0; j < d.size(); j++)
-						d2[i][j] = (int)((d.get(i)+d.get(j))%d1);
+						d2[i][j] = (int)((d.get(i)-d.get(j))%d1);
 				}
 				for(i = 0; i < d.size(); i++)
 				{
 					for(int j = 0; j < d.size(); j++)
 					{
 						if(d2[i][j] == 0)
+						{
 							System.out.println("Identity element exists");
+							identity_exists = true;
+						}
 					}
 					
 				}
 				for(i = 0; i < d.size() ; i++)
 				{
 					for(int j = 0 ; j < d.size(); j++)
-						d2[i][j] = 0;
+						d2[i][j] = 0; //To free up memory
 				}
 				d2 = null;
 			}
@@ -341,21 +353,24 @@ class group{
 				for(i = 0; i < d.size(); i++)
 				{
 					for(int j = 0; j < d.size(); j++)
-						d2[i][j] = (int)((d.get(i)+d.get(j))%d1);
+						d2[i][j] = (int)((d.get(i)*d.get(j))%d1);
 				}
 				for(i = 0; i < d.size(); i++)
 				{
 					for(int j = 0; j < d.size(); j++)
 					{
-						if(d2[i][j] == 1)
+						if(d2[i][j] == 0)
+						{
 							System.out.println("Identity element exists");
+							identity_exists = true;
+						}
 					}
 					
 				}
 				for(i = 0; i < d.size() ; i++)
 				{
 					for(int j = 0 ; j < d.size(); j++)
-						d2[i][j] = 0;
+						d2[i][j] = 0; //To free up memory
 				}
 				d2 = null;
 			}
@@ -369,21 +384,55 @@ class group{
 				for(i = 0; i < d.size(); i++)
 				{
 					for(int j = 0; j < d.size(); j++)
-						d2[i][j] = (int)((d.get(i)+d.get(j))%d1);
+						d2[i][j] = (int)((d.get(i)/d.get(j))%d1);
 				}
 				for(i = 0; i < d.size(); i++)
 				{
 					for(int j = 0; j < d.size(); j++)
 					{
-						if(d2[i][j] == 1)
+						if(d2[i][j] == 0)
+						{
 							System.out.println("Identity element exists");
+							identity_exists = true;
+						}
 					}
 					
 				}
 				for(i = 0; i < d.size() ; i++)
 				{
 					for(int j = 0 ; j < d.size(); j++)
-						d2[i][j] = 0;
+						d2[i][j] = 0; //To free up memory
+				}
+				d2 = null;
+			}
+			else if(s.charAt(0) == '^')
+			{
+				int i = 0, count = 0;
+				while(i+1 < operations.length() && Character.isDigit(operations.charAt(i+1)) == true)
+					s.concat(Character.toString(operations.charAt(i)));
+				double d1 = Double.parseDouble(s);
+				int d2[][] = new int[d.size()][d.size()]; //Needs optimizing
+				for(i = 0; i < d.size(); i++)
+				{
+					for(int j = 0; j < d.size(); j++)
+						d2[i][j] = (int)(Math.pow(d.get(i), d.get(j))%d1);
+				}
+				for(i = 0; i < d.size(); i++)
+				{
+					for(int j = 0; j < d.size(); j++)
+					{
+						if(d2[i][j] == 0)
+						{
+							System.out.println("Identity element exists");
+							identity_exists = true;
+						}
+					}
+					
+				}
+				for(i = 0; i < d.size() ; i++)
+				{
+					for(int j = 0 ; j < d.size(); j++)
+						d2[i][j] = 0; //To free up memory
 				}
 				d2 = null;
 			}
@@ -396,5 +445,6 @@ public class group_theory{
 	public static void main (String args[])
 	{
 		Scanner in = new Scanner(System.in);
+		
 	}
 }
