@@ -205,10 +205,8 @@ class group{
 		}
 		String s = new String();
 		for(int i = 0; i < 2 ; i++)
-		{
 			s.concat(Character.toString(operations.charAt(i)));
-		}
-		if(s.equals("<="))
+		if(s.equals("<=") && Character.isDigit(operations.charAt(3)) == true)
 		{
 			if(Character.isDigit(operations.charAt(3)) == true)
 			{
@@ -234,9 +232,44 @@ class group{
 				else
 					return false;
 				i = 0;
+				for(i = 0; i < d.size(); i++)
+				{
+					
+				}
+				i = 0;
 			}
 		}
-		else if(s.equals(">="))
+		else if(s.equals("-<") && Character.isDigit(operations.charAt(3)))
+		{
+			int i = 3;
+			s = "";
+			while(i+1 < operations.length() && Character.isDigit(operations.charAt(i+1)) == true)
+				s.concat(Character.toString(operations.charAt(i)));
+			double d1 = Double.parseDouble(s);
+			boolean identity_exists = false;
+			for(i = 0; i < d.size();i++)
+			{
+				if(d.get(i) == d1)
+					identity_exists = true;
+			}
+			if(identity_exists == true)
+			{
+				int count = 0;
+				System.out.println("Identity element exists");
+				for(i = 0; i < d.size(); i++)
+				{
+					if(d.get(i) > d1)
+						count++;
+				}
+				if(count == d.size()/2) //Doesn't take into consideration each element but rather the number of elements
+					System.out.println("Inverse elements exist for the amount of non-inverse elements");
+				else
+					return false;
+			}
+			else
+				return false;
+		}
+		else if(s.equals(">=") && Character.isDigit(operations.charAt(3)))
 		{
 			
 		}
@@ -244,7 +277,7 @@ class group{
 		{
 			if(s.charAt(0) == '+')
 			{
-				int i = 0, count = 0;
+				int i = 0;
 				while(i+1 < operations.length() && Character.isDigit(operations.charAt(i+1)) == true)
 					s.concat(Character.toString(operations.charAt(i)));
 				double d1 = Double.parseDouble(s);
