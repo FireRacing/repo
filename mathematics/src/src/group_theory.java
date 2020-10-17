@@ -7,7 +7,7 @@ import java.util.ArrayList;
  *         Add support for <> and = operators in verify_whether_subgroup
  */
 class group{
-	boolean verify_whether_group(ArrayList<Double> d,char group_name,String operation)
+	boolean verify_whether_group(ArrayList<Integer> d,char group_name,String operation)
 	/*
 	 * Format for operation string (operation1 operation2 (number or operation3))
 	 * How the function will check for group validity:
@@ -121,8 +121,8 @@ class group{
 		if(operations == "--+" || operations == "---")
 		{
 			boolean identity_exists = false;
-			for (Double element : d) {
-				if(element==0)
+			for (int i = 0 ; i < d.size() ; i++) {
+				if(d.get(i)==0)
 				{
 					System.out.println("Identity element exists");
 					identity_exists = true;
@@ -448,12 +448,12 @@ public class group_theory{
 	{
 		Scanner in = new Scanner(System.in);
 		group g = new group();
+		ArrayList<Integer> d = new ArrayList<Integer>();
 		System.out.print("How many elements do you want in the set? ");
 		int n = in.nextInt();
-		ArrayList<Double> d = new ArrayList<Double>(n);
 		System.out.println("Input the set");
 		for(int i = 0; i < n ; i++)
-			d.add(in.nextDouble());
+			d.add(in.nextInt());
 		System.out.println(g.verify_whether_group(d,'G', "--+"));
 	}
 }
