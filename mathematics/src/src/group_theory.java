@@ -7,7 +7,7 @@ import java.util.ArrayList;
  *         Add support for <> and = operators in verify_whether_subgroup
  */
 class group{
-	boolean verify_whether_group(ArrayList<Integer> d,char group_name,String operation)
+	boolean verify_whether_group(ArrayList<Double> d,char group_name,String operation)
 	/*
 	 * Format for operation string (operation1 operation2 (number or operation3))
 	 * How the function will check for group validity:
@@ -118,49 +118,51 @@ class group{
 	 * @param operations - operations to be performed
 	 */
 	{
-		if(operations.equals("--+") || operations.equals("---"))
+		if(operations == "--+" || operations == "---")
 		{
-			for(int i = 0;i < d.size();i++)
-			{
-				if(d.get(i)==0)
+			boolean identity_exists = false;
+			for (Double element : d) {
+				if(element==0)
+				{
 					System.out.println("Identity element exists");
-				else
-				{
-					System.out.println("Identity element does not exist");
-					return false;
+					identity_exists = true;
+					break;
 				}
 			}
-			int count =0,count1 = 0;
-			if(operations.equals("--+"))
+			if(identity_exists == true)
 			{
-				System.out.println("Inverse exists");
-				for(int i = 0; i < d.size(); i++)
+				int count =0,count1 = 0;
+				if(operations.equals("--+"))
 				{
-					if(i+1<d.size()&&((d.get(i)+d.get(i+1))==(d.get(i+1)+d.get(i))))
-						count++;
+					System.out.println("Inverse exists");
+					for(int i = 0; i < d.size(); i++)
+					{
+						if(i+1<d.size()&&((d.get(i)+d.get(i+1))==(d.get(i+1)+d.get(i))))
+							count++;
+					}
+					if(count == d.size()-2)
+					{
+						System.out.println(group_name+" is a group under addition");
+						return true;
+					}
 				}
-				if(count == d.size()-2)
+				else if(operations.equals("---"))
 				{
-					System.out.println(group_name+" is a group under addition");
-					return true;
+					for(int i=0;i<d.size();i++)
+					{
+						if(i+1<d.size()&&((d.get(i)-d.get(i+1))==(d.get(i+1)-d.get(i))))
+							count++;
+						if(d.get(i)-d.get(i) == 0)
+							count++;
+					}
+					if(count==d.size()-2 && count1 == d.size()-1)
+					{
+						System.out.println(group_name+" is a group under subtraction");
+						return true;
+					}
+					else
+						System.out.println(group_name+" is not a group under subtraction");
 				}
-			}
-			else if(operations.equals("---"))
-			{
-				for(int i=0;i<d.size();i++)
-				{
-					if(i+1<d.size()&&((d.get(i)-d.get(i+1))==(d.get(i+1)-d.get(i))))
-						count++;
-					if(d.get(i)-d.get(i) == 0)
-						count++;
-				}
-				if(count==d.size()-2 && count1 == d.size()-1)
-				{
-					System.out.println(group_name+" is a group under subtraction");
-					return true;
-				}
-				else
-					System.out.println(group_name+" is not a group under subtraction");
 			}
 		}
 		if(operations.equals("--*") || operations.equals("--/"))
@@ -445,6 +447,13 @@ public class group_theory{
 	public static void main (String args[])
 	{
 		Scanner in = new Scanner(System.in);
-		
+		group g = new group();
+		System.out.print("How many elements do you want in the set? ");
+		int n = in.nextInt();
+		ArrayList<Double> d = new ArrayList<Double>(n);
+		System.out.println("Input the set");
+		for(int i = 0; i < n ; i++)
+			d.add(in.nextDouble());
+		System.out.println(g.verify_whether_group(d,'G', "--+"));
 	}
 }
