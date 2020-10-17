@@ -118,7 +118,7 @@ class group{
 	 * @param operations - operations to be performed
 	 */
 	{
-		if(operations == "--+" || operations == "---")
+		if(operations.equals("--+") || operations.equals("---"))
 		{
 			boolean identity_exists = false;
 			for (int i = 0 ; i < d.size() ; i++) {
