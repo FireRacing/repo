@@ -12,6 +12,7 @@ class group{
 	 * Format for operation string (operation1 operation2 (number or operation3))
 	 * How the function will check for group validity:
 	 * Apply first two operations on the group and then check for validity with respect to the third operation (if there exists one)
+	 * Supported operations : + - / * >= <= %(upcoming)
 	 * If the 2nd operation is a '%' the first operation is applied and then moduloed with the number present after the modulo
 	 */
 	{
