@@ -20,17 +20,32 @@ class group{
 			for(int i = 0;i < d.size(); i++)
 			{
 				if(d.get(i)==0)
-					System.out.println("Identity element exists");
-				else
 				{
-					System.out.println("Identity element does not exist");
-					return false;
+					System.out.println("Identity element exists");
+					break;
 				}
 			}
 			int count =0,count1 = 0;
 			if(operation.equals("--+"))
 			{
-				System.out.println("Inverse exists");
+				for(int i = 0 ; i < d.size() ; i++)
+				{
+					if(d.get(i) == 0)
+						continue;
+					else
+					{
+						for(int j = 0 ; j < d.size(); j++)
+						{
+							if(d.get(i) - d.get(j) == 0)
+								count++;
+						}
+					}
+				}
+				if(count == 2)
+					System.out.println("Inverse exists");
+				else
+					return false;
+				count = 0;
 				for(int i=0;i<d.size();i++)
 				{
 					if(i+1<d.size()&&((d.get(i)+d.get(i+1))==(d.get(i+1)+d.get(i))))
@@ -49,7 +64,7 @@ class group{
 					if(i+1<d.size()&&((d.get(i)-d.get(i+1))==(d.get(i+1)-d.get(i))))
 						count++;
 					if(d.get(0)-d.get(0) == 0)
-						count++;
+						count1++;
 				}
 				if(count==d.size()-2 && count1 == d.size()-1)
 				{
@@ -233,8 +248,7 @@ class group{
 				{
 					System.out.println("Identity element exists");
 					for(i = 0; i < d.size(); i++)
-					{
-						
+					{	
 					}
 				}
 				else
