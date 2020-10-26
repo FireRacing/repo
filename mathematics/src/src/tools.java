@@ -139,87 +139,38 @@ class tools1{
     }
     public int[] reportSize(double d[][])
     {
-    	int counter = 0,i=0,j=0;;
-    	while(true)
-    	{
-    		try {
-    			double ele = d[i][j+1];
-    			counter++;
-    		}catch(ArrayIndexOutOfBoundsException e)
-    		{
-    			break;
-    		}
-    	}
-    	size[0] = d.length/counter;
-    	size[1] = counter;
+    	size[0] = d[0].length;
+    	size[1] = d.length;
     	return size;
     }
     public int[] reportSize(String d[][])
     {
-    	int counter = 0,i=0,j=0;;
-    	while(true)
-    	{
-    		try {
-    			String ele = d[i][j+1];
-    			counter++;
-    		}catch(ArrayIndexOutOfBoundsException e)
-    		{
-    			break;
-    		}
-    	}
-    	size[0] = d.length/counter;
-    	size[1] = counter;
+    	size[0] = d[0].length;
+    	size[1] = d.length;
     	return size;
     }
     public int[] reportSize(int d[][])
     {
-    	int counter = 0,i=0,j=0;;
-    	while(true)
-    	{
-    		try {
-    			double ele = d[i][j+1];
-    			counter++;
-    		}catch(ArrayIndexOutOfBoundsException e)
-    		{
-    			break;
-    		}
-    	}
-    	size[0] = d.length/counter;
-    	size[1] = counter;
+    	size[0] = d[0].length;
+    	size[1] = d.length;
     	return size;
     }
     public int[] reportSize(long d[][])
     {
-    	int counter = 0,i=0,j=0;;
-    	while(true)
-    	{
-    		try {
-    			long ele = d[i][j+1];
-    			counter++;
-    		}catch(ArrayIndexOutOfBoundsException e)
-    		{
-    			break;
-    		}
-    	}
-    	size[0] = d.length/counter;
-    	size[1] = counter;
+    	size[0] = d[0].length;
+    	size[1] = d.length;
     	return size;
     }
     public int[] reportSize(float d[][])
     {
-    	int counter = 0,i=0,j=0;;
-    	while(true)
-    	{
-    		try {
-    			float ele = d[i][j+1];
-    			counter++;
-    		}catch(ArrayIndexOutOfBoundsException e)
-    		{
-    			break;
-    		}
-    	}
-    	size[0] = d.length/counter;
-    	size[1] = counter;
+    	size[0] = d[0].length;
+    	size[1] = d.length;
+    	return size;
+    }
+    public int[] reportSize(char d[][])
+    {
+    	size[0] = d[0].length;
+    	size[1] = d.length;
     	return size;
     }
 	public double factorial(int num)// limit - 31
@@ -810,13 +761,13 @@ public class tools{
 	public static void main (String args[])
 	{
 		tools1 t = new tools1();
-		int i[][] = new int[1][2];
-		for(int i1=0;i1<1;i1++)
+		int arr[][] = new int[1][2];
+		for(int i=0;i<2;i++)
 		{
 			for(int j=0;j<2;j++)
-				i[i1][j] = i1+j;
+				arr[i][j] = i+j;
 		}
-		int size[] = t.reportSize(i);
+		int size[] = t.reportSize(arr);
 		System.out.println("Number of rows: "+size[0]);
 		System.out.println("Number of columns: "+size[1]);
 	}
