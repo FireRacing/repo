@@ -1,5 +1,5 @@
 /*
- * Note:- Have not tested the report size functions.
+ * Note:- 
  */
 package src;
 import java.text.DecimalFormat;
@@ -137,40 +137,142 @@ class tools1{
     			d1[i][j] = sigmoid(d[i][j])*(1-sigmoid(d[i][j]));
     	return d1;
     }
+    /*
+     * The following report size functions will
+     * not work for zero sized arrays.
+     * The format of the report size array
+     * is as follows [row column]
+     */
     public int[] reportSize(double d[][])
     {
-    	size[0] = d[0].length;
-    	size[1] = d.length;
+    	if(d[0].length == 0)
+    	{
+    		if(d.length == 0)
+    		{
+    			size[0] = 0;
+            	size[1] = 0;
+    		}
+    		else
+    		{
+    			size[0] = 0;
+            	size[1] = d.length;
+    		}
+    	}
+    	else
+    	{
+    		size[0] = d[0].length;
+        	size[1] = d.length;
+    	}
     	return size;
     }
     public int[] reportSize(String d[][])
     {
-    	size[0] = d[0].length;
-    	size[1] = d.length;
+    	if(d[0].length == 0)
+    	{
+    		if(d.length == 0)
+    		{
+    			size[0] = 0;
+            	size[1] = 0;
+    		}
+    		else
+    		{
+    			size[0] = 0;
+            	size[1] = d.length;
+    		}
+    	}
+    	else
+    	{
+    		size[0] = d[0].length;
+        	size[1] = d.length;
+    	}
     	return size;
     }
     public int[] reportSize(int d[][])
     {
-    	size[0] = d[0].length;
-    	size[1] = d.length;
+    	if(d[0].length == 0)
+    	{
+    		if(d.length == 0)
+    		{
+    			size[0] = 0;
+            	size[1] = 0;
+    		}
+    		else
+    		{
+    			size[0] = 0;
+            	size[1] = d.length;
+    		}
+    	}
+    	else
+    	{
+    		size[0] = d[0].length;
+        	size[1] = d.length;
+    	}
     	return size;
     }
     public int[] reportSize(long d[][])
     {
-    	size[0] = d[0].length;
-    	size[1] = d.length;
+    	if(d[0].length == 0)
+    	{
+    		if(d.length == 0)
+    		{
+    			size[0] = 0;
+            	size[1] = 0;
+    		}
+    		else
+    		{
+    			size[0] = 0;
+            	size[1] = d.length;
+    		}
+    	}
+    	else
+    	{
+    		size[0] = d[0].length;
+        	size[1] = d.length;
+    	}
     	return size;
     }
     public int[] reportSize(float d[][])
     {
-    	size[0] = d[0].length;
-    	size[1] = d.length;
+    	if(d[0].length == 0)
+    	{
+    		if(d.length == 0)
+    		{
+    			size[0] = 0;
+            	size[1] = 0;
+    		}
+    		else
+    		{
+    			size[0] = 0;
+            	size[1] = d.length;
+    		}
+    	}
+    	else
+    	{
+    		size[0] = d[0].length;
+        	size[1] = d.length;
+    	}
     	return size;
     }
     public int[] reportSize(char d[][])
     {
-    	size[0] = d[0].length;
-    	size[1] = d.length;
+    	if(d[0].length == 0)
+    	{
+    		if(d.length == 0)
+    		{
+    			size[0] = 0;
+            	size[1] = 0;
+    		}
+    		else
+    		{
+    			size[0] = 0;
+            	size[1] = d.length;
+    		}
+    	}
+    	else
+    	{
+    		size[0] = d[0].length;
+        	size[1] = d.length;
+    	}
     	return size;
     }
 	public double factorial(int num)// limit - 31
