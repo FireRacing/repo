@@ -16,7 +16,7 @@ class node{
 	String id;
 }
 
-class linked_list{
+class linked_list{ //Doubly linked list
 	node cur = null;
 	node temp = null;
 	node prev = null;
@@ -34,7 +34,7 @@ class linked_list{
 		id_list.add(new_node.id);
 		return new_node;
 	}
-	node insert_node(node start,double data, String coeff, char operator)
+	node insert_node(node start,double data, String coeff, char operator) //Appends a node at the end
 	{
 		if(start == null)
 			start = create_node(data,coeff,operator);
@@ -89,7 +89,7 @@ class linked_list{
 		}
 		return start;
 	}
-	node clear(node start)
+	node clear(node start) //Clears the list
 	{
 		while(start != null)
 			start = delete_node(start,start.data,start.id); 
@@ -145,134 +145,38 @@ class tools1{
      */
     public int[] reportSize(double d[][])
     {
-    	if(d[0].length == 0)
-    	{
-    		if(d.length == 0)
-    		{
-    			size[0] = 0;
-            	size[1] = 0;
-    		}
-    		else
-    		{
-    			size[0] = 0;
-            	size[1] = d.length;
-    		}
-    	}
-    	else
-    	{
-    		size[0] = d[0].length;
-        	size[1] = d.length;
-    	}
+    	size[0] = d[0].length;
+    	size[1] = d.length;
     	return size;
     }
     public int[] reportSize(String d[][])
     {
-    	if(d[0].length == 0)
-    	{
-    		if(d.length == 0)
-    		{
-    			size[0] = 0;
-            	size[1] = 0;
-    		}
-    		else
-    		{
-    			size[0] = 0;
-            	size[1] = d.length;
-    		}
-    	}
-    	else
-    	{
-    		size[0] = d[0].length;
-        	size[1] = d.length;
-    	}
+    	size[0] = d[0].length;
+    	size[1] = d.length;
     	return size;
     }
     public int[] reportSize(int d[][])
     {
-    	if(d[0].length == 0)
-    	{
-    		if(d.length == 0)
-    		{
-    			size[0] = 0;
-            	size[1] = 0;
-    		}
-    		else
-    		{
-    			size[0] = 0;
-            	size[1] = d.length;
-    		}
-    	}
-    	else
-    	{
-    		size[0] = d[0].length;
-        	size[1] = d.length;
-    	}
+    	size[0] = d[0].length;
+    	size[1] = d.length;
     	return size;
     }
     public int[] reportSize(long d[][])
     {
-    	if(d[0].length == 0)
-    	{
-    		if(d.length == 0)
-    		{
-    			size[0] = 0;
-            	size[1] = 0;
-    		}
-    		else
-    		{
-    			size[0] = 0;
-            	size[1] = d.length;
-    		}
-    	}
-    	else
-    	{
-    		size[0] = d[0].length;
-        	size[1] = d.length;
-    	}
+    	size[0] = d[0].length;
+    	size[1] = d.length;
     	return size;
     }
     public int[] reportSize(float d[][])
     {
-    	if(d[0].length == 0)
-    	{
-    		if(d.length == 0)
-    		{
-    			size[0] = 0;
-            	size[1] = 0;
-    		}
-    		else
-    		{
-    			size[0] = 0;
-            	size[1] = d.length;
-    		}
-    	}
-    	else
-    	{
-    		size[0] = d[0].length;
-        	size[1] = d.length;
-    	}
+    	size[0] = d[0].length;
+    	size[1] = d.length;
     	return size;
     }
     public int[] reportSize(char d[][])
     {
-    	if(d[0].length == 0)
-    	{
-    		if(d.length == 0)
-    		{
-    			size[0] = 0;
-            	size[1] = 0;
-    		}
-    		else
-    		{
-    			size[0] = 0;
-            	size[1] = d.length;
-    		}
-    	}
-    	else
-    	{
-    		size[0] = d[0].length;
-        	size[1] = d.length;
-    	}
+    	size[0] = d[0].length;
+    	size[1] = d.length;
     	return size;
     }
 	public double factorial(int num)// limit - 31
